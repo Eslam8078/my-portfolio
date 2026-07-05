@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Enable dark mode using the .dark class */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optional: smooth color transitions */
+* {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: white;
+  color: #0f172a;
+}
+
+.dark body {
+  background: #020617;
+  color: white;
+}
