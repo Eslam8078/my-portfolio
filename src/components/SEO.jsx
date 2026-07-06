@@ -8,7 +8,7 @@ const DEFAULT_SEO = {
   keywords:
     "React Developer, Frontend Developer, JavaScript, React.js, Tailwind CSS, Portfolio, Eslam Ayman",
   image: "/profile.png",
-  url: "https://your-domain.com",
+  url: "https://eslam-8078.vercel.app",
   author: "Eslam Ayman",
   themeColor: "#0f172a",
 };

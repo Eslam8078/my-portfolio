@@ -4,7 +4,7 @@ export const projects = [
     title: "Diagnosis Assistant",
     description:
       "An AI-powered medical diagnosis web application built with React.js. Features authentication, disease information, symptom analysis, responsive UI, and modern UX.",
-    image: "/projects/diagnosis-assistant.png",
+    image: "/projects/diagnosis-assistant.webp",
     technologies: [
       "React.js",
       "JavaScript",
@@ -23,7 +23,7 @@ export const projects = [
     title: "Bus Booking Web Application",
     description:
       "A responsive bus booking platform built with React.js, API integration, authentication, reusable components, and responsive UI.",
-    image: "/projects/bus-booking.png",
+    image: "/projects/bus-booking.webp",
     technologies: [
       "React",
       "JavaScript",
@@ -41,7 +41,7 @@ export const projects = [
     title: "Handwritten Text Recognition",
     description:
       "Graduation project using Python and OpenCV for handwritten text recognition.",
-    image: "/projects/htr.png",
+    image: "/projects/htr.webp",
     technologies: [
       "Python",
       "OpenCV",

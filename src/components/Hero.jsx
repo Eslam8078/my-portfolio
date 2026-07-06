@@ -154,7 +154,7 @@ export default function Hero() {
             <div className="absolute inset-0 rounded-full bg-teal-500 blur-3xl opacity-30" />
 
             <img
-              src="/profile.png"
+              src="/profile.webp"
               alt={NAME}
               className="
                 relative w-80 h-80 lg:w-96 lg:h-96
