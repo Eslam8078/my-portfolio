@@ -31,7 +31,7 @@ export const projects = [
       "REST API",
       "Node.js",
     ],
-    github: "https://github.com/MohamedYHassan/ReactApp.git",
+    github: "https://github.com/Eslam8078/bus-booking",
     type: "frontend",
     featured: true,
   },
@@ -49,7 +49,7 @@ export const projects = [
       "Image Processing",
     ],
     github:
-      "https://github.com/MohamedYHassan/A-Handwritten-Text-Recognition-System.git",
+      "https://github.com/Eslam8078/Handwritten-Text-Recognition",
     type: "ai",
     featured: false,
   },
