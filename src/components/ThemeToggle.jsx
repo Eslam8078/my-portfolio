@@ -31,7 +31,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white transition hover:border-teal-500 dark:border-slate-700 dark:bg-slate-900"
+      className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 bg-white transition hover:border-teal-500 dark:border-slate-700 dark:bg-slate-900 cursor-pointer"
     >
       {theme === "dark" ? (
         <Sun className="text-yellow-400" size={20} />

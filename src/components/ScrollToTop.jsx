@@ -59,6 +59,7 @@ export default function ScrollToTop() {
             text-slate-900
             shadow-xl hover:shadow-2xl
             transition-all
+            cursor-pointer
           "
         >
           <ArrowUp size={24} />

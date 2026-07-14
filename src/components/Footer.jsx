@@ -87,6 +87,7 @@ export default function Footer() {
               text-white font-semibold
               shadow-lg hover:shadow-xl
               transition-all duration-300
+              cursor-pointer
             "
           >
             <ArrowUp size={18} />
