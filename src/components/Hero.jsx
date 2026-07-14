@@ -20,7 +20,7 @@ const SOCIALS = [
   },
   {
     icon: FaLinkedin,
-    href: "https://linkedin.com/in/eslam-ayman-0b550527b",
+    href: "https://www.linkedin.com/in/eslam-ayman8078/",
   },
   {
     icon: FaEnvelope,

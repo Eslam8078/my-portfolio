@@ -13,8 +13,8 @@ const CONTACT_ITEMS = [
   {
     icon: FaLinkedin,
     title: "LinkedIn",
-    value: "linkedin.com/in/eslam-ayman-0b550527b",
-    href: "https://linkedin.com/in/eslam-ayman-0b550527b",
+    value: "linkedin.com/in/eslam-ayman8078",
+    href: "https://www.linkedin.com/in/eslam-ayman8078",
   },
   {
     icon: FaGithub,
