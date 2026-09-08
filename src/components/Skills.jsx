@@ -103,7 +103,7 @@ export default function Skills() {
                     key={name}
                     className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
                   >
-                    {Icon && <Icon className="text-teal-500" />}
+                    {Icon && <Icon className="accent-icon" />}
                     {name}
                   </span>
                 ))}

@@ -13,14 +13,15 @@ export default function LoadingScreen({ children }) {
 
   return (
     <>
-      <AnimatePresence mode="wait">
+      {children}
+      <AnimatePresence>
         {loading && (
           <motion.div
             className="loading-screen"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.015 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            aria-label="Loading portfolio"
+            role="status" aria-live="polite" aria-label="Loading portfolio"
           >
             <div className="loading-content">
               <motion.div
@@ -29,7 +30,7 @@ export default function LoadingScreen({ children }) {
                 animate={{ scale: 1, opacity: 1, rotate: 0 }}
                 transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
               >
-                EA
+                <img src="/logo.svg" alt="EA" />
               </motion.div>
               <motion.h1 initial={{ y: 15, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.1 }}>
                 Eslam Ayman
@@ -44,7 +45,6 @@ export default function LoadingScreen({ children }) {
           </motion.div>
         )}
       </AnimatePresence>
-      {!loading && children}
     </>
   );
 }

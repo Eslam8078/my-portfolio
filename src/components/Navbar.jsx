@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X, Download } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
@@ -23,6 +23,29 @@ export default function Navbar() {
 
   const close = () => setOpen(false);
 
+  useEffect(() => {
+    if (!open) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    const handleResize = () => {
+      if (window.innerWidth > 900) setOpen(false);
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [open]);
+
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [open]);
+
   return (
     <motion.header
       initial={{ y: -80, opacity: 0 }}
@@ -32,7 +55,7 @@ export default function Navbar() {
     >
       <div className="nav-container">
         <NavLink to="/" className="brand" onClick={close} aria-label="Eslam Ayman home">
-          <span className="brand-mark">EA</span>
+          <span className="brand-mark"><img src="/logo.svg" alt="EA" /></span>
           <span className="brand-copy">
             <strong>Eslam Ayman</strong>
             <small>Full-Stack Developer</small>
@@ -58,7 +81,7 @@ export default function Navbar() {
             <Download size={16} />
             <span>Download CV</span>
           </a>
-          <button type="button" className="mobile-menu-button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Toggle navigation">
+          <button type="button" className="mobile-menu-button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-controls="mobile-navigation" aria-label={open ? "Close navigation" : "Open navigation"}>
             {open ? <X size={23} /> : <Menu size={23} />}
           </button>
         </div>
@@ -71,7 +94,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="mobile-nav"
+            id="mobile-navigation" className="mobile-nav"
             aria-label="Mobile navigation"
           >
             <div className="mobile-nav-inner">

@@ -6,9 +6,6 @@ const SPRING_CONFIG = {
   restDelta: 0.001,
 };
 
-const GRADIENT_CLASS =
-  "bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500";
-
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
 
@@ -17,13 +14,7 @@ export default function ScrollProgress() {
   return (
     <motion.div
       style={{ scaleX }}
-      className={`
-        fixed top-0 left-0 right-0
-        z-[9999]
-        h-1 origin-left
-        ${GRADIENT_CLASS}
-        shadow-lg shadow-cyan-500/40
-      `}
+      className="scroll-progress"
     />
   );
 }

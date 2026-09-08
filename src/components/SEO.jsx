@@ -6,9 +6,9 @@ const DEFAULT_SEO = {
     "Eslam Ayman is a Full-Stack Web Developer specializing in Angular, React.js, Node.js, Express.js, MongoDB, REST APIs, and modern responsive web applications.",
   keywords:
     "Eslam Ayman, Full-Stack Developer, MERN, MEAN, Angular, React.js, Node.js, Express.js, MongoDB, JavaScript, TypeScript",
-  image: "/profile.png",
+  image: "/profile.webp",
   author: "Eslam Ayman",
-  themeColor: "#0f172a",
+  themeColor: "#07111F",
 };
 
 export default function SEO(props) {

@@ -47,14 +47,14 @@ export default function Experience() {
               <div className="flex flex-col gap-5 border-b border-slate-200 pb-6 dark:border-slate-800 md:flex-row md:items-start md:justify-between">
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-teal-500/10 text-teal-500">
+                    <span className="grid h-11 w-11 place-items-center rounded-2xl icon-tile">
                       <BriefcaseBusiness size={23} />
                     </span>
                     <div>
                       <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">
                         {experience.role}
                       </h3>
-                      <p className="mt-1 font-semibold text-teal-600 dark:text-teal-300">
+                      <p className="mt-1 font-semibold accent-text">
                         {experience.company}
                       </p>
                     </div>
@@ -70,7 +70,7 @@ export default function Experience() {
               <ul className="mt-7 grid gap-4 md:grid-cols-2">
                 {experience.points.map((point) => (
                   <li key={point} className="flex gap-3 text-slate-600 dark:text-slate-400">
-                    <CheckCircle2 className="mt-1 shrink-0 text-teal-500" size={18} />
+                    <CheckCircle2 className="mt-1 shrink-0 accent-icon" size={18} />
                     <span className="leading-7">{point}</span>
                   </li>
                 ))}

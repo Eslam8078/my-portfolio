@@ -51,7 +51,7 @@ export default function About() {
               whileHover={{ y: -7 }}
               className="glass-card rounded-3xl p-7"
             >
-              <div className="mb-6 grid h-12 w-12 place-items-center rounded-2xl bg-teal-500/10 text-teal-500">
+              <div className="mb-6 grid h-12 w-12 place-items-center rounded-2xl icon-tile">
                 <Icon size={25} />
               </div>
               <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">

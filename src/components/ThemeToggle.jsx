@@ -3,7 +3,12 @@ import { useEffect, useState } from "react";
 
 function getInitialTheme() {
   if (typeof window === "undefined") return "dark";
-  const saved = window.localStorage.getItem("theme");
+  let saved = null;
+  try {
+    saved = window.localStorage.getItem("theme");
+  } catch {
+    saved = null;
+  }
   if (saved === "light" || saved === "dark") return saved;
   return window.matchMedia?.("(prefers-color-scheme: light)").matches ? "light" : "dark";
 }
@@ -14,7 +19,9 @@ export default function ThemeToggle() {
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");
     document.documentElement.style.colorScheme = theme;
-    window.localStorage.setItem("theme", theme);
+    try {
+      window.localStorage.setItem("theme", theme);
+    } catch {}
   }, [theme]);
 
   return (

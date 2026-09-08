@@ -28,7 +28,7 @@ export default function Education() {
           className="glass-card mx-auto max-w-5xl rounded-[2rem] p-7 md:p-10"
         >
           <div className="flex flex-col gap-6 md:flex-row md:items-start">
-            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-teal-500/10 text-teal-500">
+            <div className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl icon-tile">
               <GraduationCap size={32} />
             </div>
 
@@ -38,7 +38,7 @@ export default function Education() {
                   <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">
                     Bachelor of Computer Science
                   </h3>
-                  <p className="mt-1 font-semibold text-teal-600 dark:text-teal-300">
+                  <p className="mt-1 font-semibold accent-text">
                     Helwan University · Faculty of Computer Science & Information Systems
                   </p>
                 </div>
@@ -55,7 +55,7 @@ export default function Education() {
               </p>
 
               <div className="mt-6 flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-2 rounded-full bg-teal-500/10 px-4 py-2 text-sm font-bold text-teal-600 dark:text-teal-300">
+                <span className="inline-flex items-center gap-2 rounded-full accent-pill">
                   <Award size={16} />
                   GPA 3.01 / 4.00
                 </span>

@@ -46,10 +46,10 @@ export default function Projects() {
 
         <motion.div className="project-filters" initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
-          role="tablist" aria-label="Project filters">
+          aria-label="Project filters">
           {FILTERS.map((item) => (
             <button key={item.id} type="button" onClick={() => setFilter(item.id)}
-              aria-selected={filter === item.id}
+              aria-pressed={filter === item.id}
               className={`project-filter ${filter === item.id ? "is-active" : ""}`}>
               {item.label}
             </button>
@@ -79,11 +79,11 @@ function ProjectCard({ project, index }) {
         <div className="project-icon"><TypeIcon size={23} /></div>
         <div className="project-card__actions">
           {index === 0 && <span className="project-rank"><Trophy size={13} /> Top Pick</span>}
-          <a href={project.github} target="_blank" rel="noreferrer"
+          <a href={project.github} target="_blank" rel="noopener noreferrer"
             aria-label={`Open ${project.title} GitHub repository`} className="icon-button">
             <FaGithub size={18} />
           </a>
-          {project.live && <a href={project.live} target="_blank" rel="noreferrer"
+          {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer"
             aria-label={`Open ${project.title} live demo`} className="icon-button">
             <ExternalLink size={17} />
           </a>}
@@ -102,10 +102,10 @@ function ProjectCard({ project, index }) {
       </div>
 
       <div className="project-card__footer">
-        <a href={project.github} target="_blank" rel="noreferrer" className="project-link">
+        <a href={project.github} target="_blank" rel="noopener noreferrer" className="project-link">
           View source <ArrowUpRight size={16} />
         </a>
-        {project.live && <a href={project.live} target="_blank" rel="noreferrer"
+        {project.live && <a href={project.live} target="_blank" rel="noopener noreferrer"
           className="project-link project-link--muted">Live demo <ArrowUpRight size={16} /></a>}
       </div>
     </motion.article>

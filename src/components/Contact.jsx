@@ -21,7 +21,7 @@ function ContactItem({ icon: Icon, title, value, href }) {
   );
 
   return href ? (
-    <a className="contact-item" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}>
+    <a className="contact-item" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noopener noreferrer" : undefined}>
       {content}
     </a>
   ) : <div className="contact-item">{content}</div>;

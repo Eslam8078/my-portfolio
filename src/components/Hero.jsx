@@ -25,13 +25,13 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0">
         <motion.div
           animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
-          transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute left-[5%] top-[15%] h-72 w-72 rounded-full bg-teal-400/10 blur-3xl"
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute left-[5%] top-[15%] h-72 w-72 rounded-full hero-orb hero-orb--one blur-3xl"
         />
         <motion.div
           animate={{ x: [0, -25, 0], y: [0, 25, 0] }}
-          transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-[10%] right-[5%] h-80 w-80 rounded-full bg-blue-500/10 blur-3xl"
+          transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-[10%] right-[5%] h-80 w-80 rounded-full hero-orb hero-orb--two blur-3xl"
         />
       </div>
 
@@ -41,17 +41,17 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.75 }}
         >
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-teal-500/20 bg-teal-500/5 px-4 py-2 text-sm font-semibold text-teal-600 dark:text-teal-300">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border hero-status">
             <Sparkles size={16} />
             Open to opportunities
           </div>
 
-          <p className="mb-4 font-semibold tracking-wide text-teal-600 dark:text-teal-300">
+          <p className="mb-4 hero-greeting">
             Hello, I'm
           </p>
 
           <h1 className="max-w-4xl text-5xl font-black leading-[.95] tracking-[-.055em] text-slate-950 dark:text-white sm:text-6xl lg:text-8xl">
-            Eslam <span className="text-teal-500">Ayman</span>
+            Eslam <span className="hero-name-accent">Ayman</span>
           </h1>
 
           <div className="mt-7 min-h-12 text-xl font-bold text-slate-600 dark:text-slate-300 sm:text-2xl">
@@ -75,14 +75,14 @@ export default function Hero() {
           <div className="mt-9 flex flex-wrap gap-3">
             <Link
               to="/projects"
-              className="inline-flex items-center rounded-xl bg-teal-600 px-6 py-3.5 font-bold text-white shadow-lg shadow-teal-600/20 transition hover:-translate-y-1 hover:bg-teal-500"
+              className="primary-button inline-flex items-center rounded-xl px-6 py-3.5 font-bold text-white shadow-lg transition"
             >
               Explore Projects
             </Link>
             <a
               href="/Eslam Ayman_Full-Stack CV.pdf"
               download
-              className="inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-6 py-3.5 font-bold text-slate-800 backdrop-blur transition hover:-translate-y-1 hover:border-teal-500 hover:text-teal-600 dark:border-slate-700 dark:bg-slate-900/60 dark:text-white"
+              className="secondary-button inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-6 py-3.5 font-bold text-slate-800 backdrop-blur transition dark:border-slate-700 dark:bg-slate-900/60 dark:text-white"
             >
               <Download size={18} />
               Download CV
@@ -95,9 +95,9 @@ export default function Hero() {
                 key={label}
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                 aria-label={label}
-                className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white/70 text-slate-600 backdrop-blur transition hover:-translate-y-1 hover:border-teal-500 hover:text-teal-500 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300"
+                className="grid h-11 w-11 place-items-center rounded-full border border-slate-300 bg-white/70 text-slate-600 backdrop-blur transition hover:-translate-y-1 hover:border-[var(--accent)] hover:text-[var(--accent-strong)] dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-300"
               >
                 <Icon size={19} />
               </a>
@@ -125,7 +125,7 @@ export default function Hero() {
           <motion.div whileHover={{ rotateY: 5, rotateX: -5, scale: 1.025 }}
             transition={{ type: "spring", stiffness: 180, damping: 18 }} className="hero-photo-card">
             <div className="hero-photo-glow" />
-            <img src="/profile.png" alt="Eslam Ayman" className="hero-photo" />
+            <img src="/profile.webp" alt="Eslam Ayman" className="hero-photo" />
             <div className="hero-photo-shine" />
           </motion.div>
         </motion.div>
@@ -135,7 +135,7 @@ export default function Hero() {
         href="/about"
         animate={{ y: [0, 8, 0] }}
         transition={{ repeat: Infinity, duration: 1.6 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-teal-500"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 hero-name-accent"
         aria-label="Scroll to about"
       >
         <ArrowDown size={25} />

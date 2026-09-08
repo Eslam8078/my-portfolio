@@ -8,8 +8,8 @@ const BASE_OPTIONS = {
   fpsLimit: 45,
   particles: {
     number: { value: 45, density: { enable: true, area: 900 } },
-    color: { value: ["#14b8a6", "#60a5fa"] },
-    links: { enable: true, distance: 150, color: "#14b8a6", opacity: 0.18, width: 1 },
+    color: { value: ["#2563eb", "#60a5fa", "#bfdbfe"] },
+    links: { enable: true, distance: 150, color: "#2563eb", opacity: 0.18, width: 1 },
     move: { enable: true, speed: 0.65, outModes: { default: "bounce" } },
     opacity: { value: 0.4 },
     size: { value: { min: 1, max: 3 } },
@@ -49,5 +49,5 @@ export default function ParticlesBackground() {
 
   if (reducedMotion) return null;
 
-  return <Particles id="particles" init={particlesInit} options={options} className="fixed inset-0 -z-10" />;
+  return <Particles id="particles" init={particlesInit} options={options} className="pointer-events-none fixed inset-0 z-0" />;
 }

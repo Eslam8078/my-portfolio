@@ -44,7 +44,7 @@ export default function Footer() {
           <div className="footer-socials">
             {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
               <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noreferrer" : undefined} aria-label={label}>
+                rel={href.startsWith("http") ? "noopener noreferrer" : undefined} aria-label={label}>
                 <Icon size={18} />
               </a>
             ))}

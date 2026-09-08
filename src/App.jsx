@@ -6,6 +6,7 @@ import LoadingScreen from "./components/LoadingScreen";
 import ParticlesBackground from "./components/ParticlesBackground";
 import ScrollProgress from "./components/ScrollProgress";
 import ScrollToTop from "./components/ScrollToTop";
+import AmbientMotion from "./components/AmbientMotion";
 import Home from "./pages/Home";
 import AboutPage from "./pages/About";
 import SkillsPage from "./pages/Skills";
@@ -24,8 +25,9 @@ function AppContent() {
   const location = useLocation();
 
   return (
-    <div className="app-shell">
+    <div className="app-shell relative">
       <ParticlesBackground />
+      <AmbientMotion />
       <ScrollProgress />
       <Navbar />
       <ScrollToTop />
