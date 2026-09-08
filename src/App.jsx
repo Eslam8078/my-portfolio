@@ -1,67 +1,68 @@
-import LoadingScreen from "./components/LoadingScreen";
-import GitHubStats from "./components/GitHubStats";
-import ScrollProgress from "./components/ScrollProgress";
+import { AnimatePresence, motion } from "framer-motion";
+import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Education from "./components/Education";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import ScrollToTop from "./components/ScrollToTop";
+import LoadingScreen from "./components/LoadingScreen";
 import ParticlesBackground from "./components/ParticlesBackground";
-import Experience from "./components/Experience";
-import SEO from "./components/SEO";
+import ScrollProgress from "./components/ScrollProgress";
+import ScrollToTop from "./components/ScrollToTop";
+import Home from "./pages/Home";
+import AboutPage from "./pages/About";
+import SkillsPage from "./pages/Skills";
+import ProjectsPage from "./pages/Projects";
+import ExperiencePage from "./pages/Experience";
+import EducationPage from "./pages/Education";
+import ContactPage from "./pages/Contact";
 
-function App() {
+const pageTransition = {
+  initial: { opacity: 0, y: 12 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -8 },
+};
+
+function AppContent() {
+  const location = useLocation();
+
   return (
-    <LoadingScreen>
-      <>
-       <SEO />
-      <div className="bg-white text-slate-900 transition-colors duration-300 dark:bg-slate-950 dark:text-white">
-        {/* ScrollProgress */}
-        <ParticlesBackground />
+    <div className="app-shell">
+      <ParticlesBackground />
+      <ScrollProgress />
+      <Navbar />
+      <ScrollToTop />
 
-        {/* Scroll Progress */}
-        <ScrollProgress />
+      <main className="relative z-10 pt-16">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={location.pathname}
+            variants={pageTransition}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <Routes location={location}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/skills" element={<SkillsPage />} />
+              <Route path="/projects" element={<ProjectsPage />} />
+              <Route path="/experience" element={<ExperiencePage />} />
+              <Route path="/education" element={<EducationPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </motion.div>
+        </AnimatePresence>
+      </main>
 
-        {/* Navigation */}
-        <Navbar />
-
-        {/* Hero */}
-        <Hero />
-
-        {/* About */}
-        <About />
-
-        {/* Skills */}
-        <Skills />
-
-        <GitHubStats />
-
-        {/* Projects */}
-        <Projects />
-
-        {/* Exprience */}
-        <Experience />
-
-
-        {/* Education */}
-        <Education />
-
-        {/* Contact */}
-        <Contact />
-
-        {/* Footer */}
-        <Footer />
-        
-        <ScrollToTop />
-      </div>
-      </>
-    </LoadingScreen>
-    
+      <Footer />
+    </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <LoadingScreen>
+      <AppContent />
+    </LoadingScreen>
+  );
+}

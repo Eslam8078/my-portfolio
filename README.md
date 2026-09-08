@@ -1,16 +1,41 @@
-# React + Vite
+# Eslam Ayman — Full-Stack Developer Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Modern responsive portfolio built with React, Vite, Tailwind CSS, Framer Motion, React Router, tsParticles, and Lucide/React Icons.
 
-Currently, two official plugins are available:
+## Refactor highlights
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Single-page home experience with dedicated URL routes for every major section.
+- Shared animated shell with route transitions, sticky navigation, scroll progress, scroll-to-top, particles, and theme persistence.
+- Responsive navigation with active route state and animated mobile menu.
+- Stronger project cards with filtering, hover motion, technology chips, source/live actions, and consistent spacing.
+- Profile presentation with animated glow, orbit rings, particles, shine, and restrained 3D hover motion.
+- Contact section refactored into reusable data-driven items and accessible CTA actions.
+- Theme initialization is performed before React mounts to reduce light/dark flash.
+- Particles are reduced/disabled when the user prefers reduced motion and run at a lower FPS for better performance.
+- Removed unused GitHub stats component and stale hash navigation.
+- Removed obsolete source comments and stale portfolio-domain references.
 
-## React Compiler
+## Routes
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `/` — full portfolio landing page
+- `/about` — hero + about
+- `/skills` — technical skills
+- `/projects` — selected projects
+- `/experience` — development experience
+- `/education` — education
+- `/contact` — contact and CV actions
 
-## Expanding the ESLint configuration
+Unknown routes redirect to `/` and Vercel SPA rewrites are configured in `vercel.json`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Run locally
+
+```bash
+npm install
+npm run dev
+```
+
+For a production build:
+
+```bash
+npm run build
+```

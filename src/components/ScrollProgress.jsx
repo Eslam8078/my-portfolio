@@ -1,6 +1,5 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 
-// 1. Config
 const SPRING_CONFIG = {
   stiffness: 120,
   damping: 25,
@@ -10,7 +9,6 @@ const SPRING_CONFIG = {
 const GRADIENT_CLASS =
   "bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500";
 
-// 2. Component
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
 

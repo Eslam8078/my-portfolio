@@ -1,142 +1,90 @@
+import { AnimatePresence, motion } from "framer-motion";
+import { Menu, X, Download } from "lucide-react";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
 
-// 1. Config (Separation of concerns)
 const NAV_LINKS = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Education", href: "#education" },
-  { name: "Contact", href: "#contact" },
+  ["/", "Home"],
+  ["/about", "About"],
+  ["/skills", "Skills"],
+  ["/projects", "Projects"],
+  ["/experience", "Experience"],
+  ["/education", "Education"],
+  ["/contact", "Contact"],
 ];
 
-// 2. Main Component
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+function navClass({ isActive }) {
+  return `nav-link ${isActive ? "is-active" : ""}`;
+}
 
-  const toggleMenu = () => setIsOpen((prev) => !prev);
-  const closeMenu = () => setIsOpen(false);
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
+  const close = () => setOpen(false);
 
   return (
     <motion.header
-      initial={{ y: -70 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="
-        fixed top-0 left-0 right-0 z-50
-        backdrop-blur-xl
-        bg-white/80 dark:bg-slate-900/80
-        border-b border-gray-200 dark:border-slate-800
-        transition-colors duration-300
-      "
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+      className="site-header"
     >
-      <div className="max-w-7xl mx-auto h-16 px-6 flex items-center justify-between">
+      <div className="nav-container">
+        <NavLink to="/" className="brand" onClick={close} aria-label="Eslam Ayman home">
+          <span className="brand-mark">EA</span>
+          <span className="brand-copy">
+            <strong>Eslam Ayman</strong>
+            <small>Full-Stack Developer</small>
+          </span>
+        </NavLink>
 
-        {/* Logo */}
-        <a
-          href="#home"
-          className="text-2xl font-bold tracking-wide text-slate-900 dark:text-white"
-        >
-          <span className="text-teal-500">E</span>slam
-        </a>
-
-        {/* Desktop Menu */}
-        <nav className="hidden md:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="
-                text-slate-700 dark:text-slate-300
-                hover:text-teal-500
-                transition
-              "
-            >
-              {link.name}
-            </a>
+        <nav className="desktop-nav" aria-label="Primary navigation">
+          {NAV_LINKS.map(([path, label]) => (
+            <NavLink key={path} to={path} end={path === "/"} className={navClass}>
+              {({ isActive }) => (
+                <span className="nav-link-inner">
+                  {label}
+                  {isActive && <motion.span layoutId="active-nav" className="nav-active-bar" />}
+                </span>
+              )}
+            </NavLink>
           ))}
-
-          <ThemeToggle />
-
-          <a
-            href="/cv.pdf"
-            download
-            className="
-              px-5 py-2 rounded-xl
-              bg-teal-500 hover:bg-teal-400
-              text-white font-semibold
-              transition
-            "
-          >
-            Resume
-          </a>
         </nav>
 
-        {/* Mobile Actions */}
-        <div className="md:hidden flex items-center gap-3">
+        <div className="nav-actions">
           <ThemeToggle />
-
-          <button
-            onClick={toggleMenu}
-            className="text-slate-900 dark:text-white"
-            aria-label="Toggle menu"
-          >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          <a href="/Eslam Ayman_Full-Stack CV.pdf" download className="nav-cv-button">
+            <Download size={16} />
+            <span>Download CV</span>
+          </a>
+          <button type="button" className="mobile-menu-button" onClick={() => setOpen((value) => !value)} aria-expanded={open} aria-label="Toggle navigation">
+            {open ? <X size={23} /> : <Menu size={23} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -25 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -25 }}
+        {open && (
+          <motion.nav
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25 }}
-            className="
-              md:hidden
-              bg-white dark:bg-slate-900
-              border-t border-gray-200 dark:border-slate-800
-            "
+            className="mobile-nav"
+            aria-label="Mobile navigation"
           >
-            <div className="flex flex-col gap-5 px-6 py-6">
-
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={closeMenu}
-                  className="
-                    text-slate-700 dark:text-slate-300
-                    hover:text-teal-500
-                    transition
-                  "
-                >
-                  {link.name}
-                </a>
+            <div className="mobile-nav-inner">
+              {NAV_LINKS.map(([path, label]) => (
+                <NavLink key={path} to={path} end={path === "/"} className={navClass} onClick={close}>
+                  {label}
+                </NavLink>
               ))}
-
-              <a
-                href="/cv.pdf"
-                download
-                onClick={closeMenu}
-                className="
-                  mt-2 text-center py-3 rounded-xl
-                  bg-teal-500 hover:bg-teal-400
-                  text-white font-semibold
-                  transition
-                "
-              >
-                Download CV
+              <a href="/Eslam Ayman_Full-Stack CV.pdf" download className="mobile-cv-button" onClick={close}>
+                <Download size={17} /> Download CV
               </a>
-
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </motion.header>

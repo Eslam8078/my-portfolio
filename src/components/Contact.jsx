@@ -1,172 +1,60 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, Send, Download } from "lucide-react";
+import { Download, Mail, MapPin, Send } from "lucide-react";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 
-// 1. Data layer (DRY principle)
 const CONTACT_ITEMS = [
-  {
-    icon: Mail,
-    title: "Email",
-    value: "eslamayman2412@gmail.com",
-    href: "mailto:eslamayman2412@gmail.com",
-  },
-  {
-    icon: FaLinkedin,
-    title: "LinkedIn",
-    value: "linkedin.com/in/eslam-ayman8078",
-    href: "https://www.linkedin.com/in/eslam-ayman8078",
-  },
-  {
-    icon: FaGithub,
-    title: "GitHub",
-    value: "github.com/Eslam8078",
-    href: "https://github.com/Eslam8078",
-  },
-  {
-    icon: MapPin,
-    title: "Location",
-    value: "Cairo, Egypt",
-  },
+  { icon: Mail, title: "Email", value: "eslamayman2412@gmail.com", href: "mailto:eslamayman2412@gmail.com" },
+  { icon: FaLinkedin, title: "LinkedIn", value: "linkedin.com/in/eslam-ayman8078", href: "https://www.linkedin.com/in/eslam-ayman8078" },
+  { icon: FaGithub, title: "GitHub", value: "github.com/Eslam8078", href: "https://github.com/Eslam8078" },
+  { icon: MapPin, title: "Location", value: "Cairo, Egypt" },
 ];
 
-// 2. Reusable Contact Item Component
 function ContactItem({ icon: Icon, title, value, href }) {
-  const Wrapper = href ? "a" : "div";
-
-  return (
-    <Wrapper
-      href={href}
-      target={href ? "_blank" : undefined}
-      rel={href ? "noreferrer" : undefined}
-      className="
-        flex items-center gap-5
-        bg-white dark:bg-slate-950
-        border border-gray-200 dark:border-slate-800
-        rounded-2xl p-5
-        hover:border-teal-500
-        transition-all
-      "
-    >
-      <Icon className="text-teal-500" size={28} />
-
-      <div>
-        <h3 className="text-slate-900 dark:text-white font-semibold">
-          {title}
-        </h3>
-
-        <p className="text-slate-600 dark:text-slate-400 hover:text-teal-500 transition">
-          {value}
-        </p>
-      </div>
-    </Wrapper>
+  const content = (
+    <>
+      <span className="contact-icon"><Icon size={21} /></span>
+      <span>
+        <strong>{title}</strong>
+        <small>{value}</small>
+      </span>
+    </>
   );
+
+  return href ? (
+    <a className="contact-item" href={href} target={href.startsWith("http") ? "_blank" : undefined} rel={href.startsWith("http") ? "noreferrer" : undefined}>
+      {content}
+    </a>
+  ) : <div className="contact-item">{content}</div>;
 }
 
-// 3. Main Component
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="py-24 bg-gray-100 dark:bg-slate-900 transition-colors duration-300"
-    >
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="contact" className="section-shell section-alt">
+      <div className="section-container">
+        <motion.header className="section-heading" initial={{ opacity: 0, y: 25 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.2 }}>
+          <span className="eyebrow">Contact</span>
+          <h2 className="section-title">Let's build something valuable</h2>
+          <p className="section-lead">Available for full-time roles, freelance opportunities, and collaborative web development projects.</p>
+        </motion.header>
 
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <p className="text-teal-500 uppercase tracking-widest font-semibold">
-            Contact
-          </p>
-
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mt-3">
-            Let's Work Together
-          </h2>
-
-          <p className="text-slate-600 dark:text-slate-400 mt-6 max-w-2xl mx-auto leading-8">
-            I'm currently looking for Frontend Developer opportunities.
-            Feel free to contact me for jobs, freelance work, or collaboration.
-          </p>
-        </motion.div>
-
-        <div className="grid lg:grid-cols-2 gap-12">
-
-          {/* Left side */}
-          <motion.div
-            initial={{ opacity: 0, x: -60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            {CONTACT_ITEMS.map((item) => (
-              <ContactItem
-                key={item.title}
-                icon={item.icon}
-                title={item.title}
-                value={item.value}
-                href={item.href}
-              />
+        <div className="contact-grid">
+          <motion.div className="contact-list" initial={{ opacity: 0, x: -35 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}>
+            {CONTACT_ITEMS.map((item, index) => (
+              <motion.div key={item.title} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.07 }}>
+                <ContactItem {...item} />
+              </motion.div>
             ))}
           </motion.div>
 
-          {/* Right side */}
-          <motion.div
-            initial={{ opacity: 0, x: 60 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-white dark:bg-slate-950 border border-gray-200 dark:border-slate-800 rounded-3xl p-8">
-
-              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-                Ready to collaborate?
-              </h3>
-
-              <p className="text-slate-600 dark:text-slate-400 leading-8 mb-8">
-                Whether you're hiring or building a product, I’d love to contribute.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-4">
-
-                <a
-                  href="mailto:eslamayman2412@gmail.com"
-                  className="
-                    flex-1 flex justify-center items-center gap-2
-                    py-4 rounded-xl
-                    bg-teal-500 hover:bg-teal-400
-                    text-white font-bold
-                    transition
-                  "
-                >
-                  <Send size={20} />
-                  Send Email
-                </a>
-
-                <a
-                  href="/cv.pdf"
-                  download
-                  className="
-                    flex-1 flex justify-center items-center gap-2
-                    py-4 rounded-xl
-                    border border-gray-300 dark:border-slate-700
-                    text-slate-900 dark:text-white
-                    hover:border-teal-500 hover:text-teal-500
-                    transition-all
-                  "
-                >
-                  <Download size={20} />
-                  Download CV
-                </a>
-
-              </div>
+          <motion.div className="contact-cta glass-card" initial={{ opacity: 0, x: 35 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.55 }}>
+            <span className="cta-badge"><span /> Open to opportunities</span>
+            <h3>Have a role or project in mind?</h3>
+            <p>Let's discuss the product, the technical challenges, and how I can contribute from frontend architecture through APIs and data workflows.</p>
+            <div className="contact-actions">
+              <a className="primary-button" href="mailto:eslamayman2412@gmail.com"><Send size={18} /> Send Email</a>
+              <a className="secondary-button" href="/Eslam Ayman_Full-Stack CV.pdf" download><Download size={18} /> Download CV</a>
             </div>
           </motion.div>
-
         </div>
       </div>
     </section>

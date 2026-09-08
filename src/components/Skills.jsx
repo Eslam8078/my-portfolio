@@ -1,118 +1,117 @@
 import { motion } from "framer-motion";
+import {
+  SiAngular,
+  SiReact,
+  SiTypescript,
+  SiJavascript,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiDocker,
+  SiGit,
+  SiPostman,
+} from "react-icons/si";
 
-// 1. Config (separation of concerns)
-const SKILLS = [
-  { name: "React.js", level: 90 },
-  { name: "JavaScript", level: 88 },
-  { name: "HTML5", level: 95 },
-  { name: "CSS3", level: 92 },
-  { name: "Bootstrap", level: 90 },
-  { name: "Node.js", level: 70 },
-  { name: "Docker", level: 65 },
-  { name: "Git", level: 85 },
-  { name: "GitHub", level: 90 },
-  { name: "Python", level: 75 },
-];
-
-// 2. Animation variants (cleaner than inline objects)
-const CARD_VARIANTS = {
-  hidden: (i) => ({
-    opacity: 0,
-    x: i % 2 === 0 ? -50 : 50,
-  }),
-  visible: {
-    opacity: 1,
-    x: 0,
+const GROUPS = [
+  {
+    title: "Frontend",
+    skills: [
+      ["Angular", SiAngular],
+      ["React.js", SiReact],
+      ["TypeScript", SiTypescript],
+      ["JavaScript (ES6+)", SiJavascript],
+      ["HTML5", null],
+      ["CSS3", null],
+      ["Bootstrap", null],
+      ["Tailwind CSS", null],
+      ["Vite", null],
+    ],
   },
-};
+  {
+    title: "Backend & Data",
+    skills: [
+      ["Node.js", SiNodedotjs],
+      ["Express.js", SiExpress],
+      ["RESTful APIs", null],
+      ["MongoDB", SiMongodb],
+      ["Mongoose", null],
+      ["SQL Server", null],
+      ["JWT & bcrypt", null],
+    ],
+  },
+  {
+    title: "Engineering",
+    skills: [
+      ["OOP", null],
+      ["MVC Architecture", null],
+      ["CRUD Operations", null],
+      ["Transactions", null],
+      ["Validation", null],
+      ["Error Handling", null],
+      ["Data Structures & Algorithms", null],
+    ],
+  },
+  {
+    title: "Tools",
+    skills: [
+      ["Git", SiGit],
+      ["GitHub", SiGit],
+      ["Docker", SiDocker],
+      ["Postman", SiPostman],
+      ["VS Code", null],
+      ["Vercel", null],
+    ],
+  },
+];
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="py-24 bg-gray-50 dark:bg-slate-950 transition-colors duration-300"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* Heading */}
+    <section id="skills" className="section-shell section-alt">
+      <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="section-heading"
         >
-          <p className="text-teal-500 font-semibold uppercase tracking-widest">
-            Technical Skills
-          </p>
-
-          <h2 className="mt-3 text-4xl font-bold text-slate-900 dark:text-white">
-            My Skills
-          </h2>
-
-          <p className="mt-5 max-w-2xl mx-auto text-slate-600 dark:text-slate-400">
-            Technologies and tools I use to build modern web applications.
+          <span className="eyebrow">Technical Skills</span>
+          <h2 className="section-title">Tools I use to ship web applications</h2>
+          <p className="section-lead">
+            A balanced stack covering frontend development, backend APIs, databases,
+            software engineering concepts, and developer tooling.
           </p>
         </motion.div>
 
-        {/* Skills Grid */}
-        <div className="grid gap-8 md:grid-cols-2">
-          {SKILLS.map((skill, index) => (
-            <SkillCard key={skill.name} skill={skill} index={index} />
+        <div className="grid gap-5 md:grid-cols-2">
+          {GROUPS.map((group, groupIndex) => (
+            <motion.article
+              key={group.title}
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: groupIndex * 0.08 }}
+              viewport={{ once: true }}
+              className="glass-card rounded-3xl p-7"
+            >
+              <h3 className="text-xl font-extrabold text-slate-900 dark:text-white">
+                {group.title}
+              </h3>
+
+              <div className="mt-5 flex flex-wrap gap-2.5">
+                {group.skills.map(([name, Icon]) => (
+                  <span
+                    key={name}
+                    className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 text-sm font-semibold text-slate-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
+                  >
+                    {Icon && <Icon className="text-teal-500" />}
+                    {name}
+                  </span>
+                ))}
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
     </section>
-  );
-}
-
-// 3. Extracted reusable component
-function SkillCard({ skill, index }) {
-  return (
-    <motion.div
-      custom={index}
-      variants={CARD_VARIANTS}
-      initial="hidden"
-      whileInView="visible"
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -5 }}
-      className="
-        rounded-2xl
-        border border-slate-200 dark:border-slate-800
-        bg-white dark:bg-slate-900
-        p-6 shadow-sm
-        hover:border-teal-400 hover:shadow-lg
-        transition-all duration-300
-      "
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold text-slate-900 dark:text-white">
-          {skill.name}
-        </h3>
-
-        <span className="font-semibold text-teal-500">
-          {skill.level}%
-        </span>
-      </div>
-
-      {/* Progress */}
-      <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-800">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          transition={{
-            duration: 1,
-            ease: "easeOut",
-          }}
-          viewport={{ once: true }}
-          className="
-            h-full rounded-full
-            bg-gradient-to-r from-teal-400 via-cyan-400 to-blue-500
-          "
-        />
-      </div>
-    </motion.div>
   );
 }

@@ -1,141 +1,83 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, MapPin } from "lucide-react";
+import { BriefcaseBusiness, CalendarDays, CheckCircle2 } from "lucide-react";
 
-// 1. Data Layer
-const EXPERIENCE_DATA = [
+const EXPERIENCE = [
   {
-    title: "Frontend React Developer",
-    company: "Personal & Team Projects",
-    period: "2024 - Present",
-    location: "Egypt",
-    icon: Briefcase,
-    highlights: [
-      "Developed responsive web applications using React.js and JavaScript.",
-      "Built reusable UI components with Tailwind CSS and Bootstrap.",
-      "Integrated REST APIs and implemented responsive layouts.",
-      "Worked collaboratively using Git and GitHub.",
-    ],
-  },
-  {
-    title: "Graduation Project",
-    company: "Faculty of Computers & Information",
-    period: "2023 - 2024",
-    location: "Egypt",
-    icon: Briefcase,
-    highlights: [
-      "Developed a Handwritten Text Recognition system.",
-      "Used Python, OpenCV, and Machine Learning techniques.",
-      "Performed image preprocessing and text recognition.",
+    role: "Web Developer",
+    company: "Personal & Academic Projects",
+    period: "Feb 2021 – Present",
+    points: [
+      "Develop full-stack web applications with React.js, Angular, Node.js, Express.js, MongoDB, and RESTful APIs.",
+      "Apply responsive design, reusable component architecture, validation, authentication, and clean coding practices.",
+      "Build end-to-end features including CRUD workflows, transactional orders, reporting, notifications, and admin functionality.",
+      "Use Git and GitHub with structured branching, pull requests, and collaborative development workflows.",
     ],
   },
 ];
 
-// 2. Reusable Experience Card
-function ExperienceCard({ exp, index }) {
-  const Icon = exp.icon;
-
-  return (
-    <motion.div
-      initial={{ opacity: 0, x: -60 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.2 }}
-      viewport={{ once: true }}
-      className="
-        bg-gray-50 dark:bg-slate-900
-        border border-gray-200 dark:border-slate-800
-        rounded-3xl p-8
-        hover:border-teal-500
-        hover:-translate-y-1
-        hover:shadow-xl dark:hover:shadow-teal-500/10
-        transition-all duration-300
-      "
-    >
-      {/* Header */}
-      <div className="flex flex-col md:flex-row md:justify-between gap-6">
-        <div>
-          <div className="flex items-center gap-3">
-            <Icon className="text-teal-500" size={24} />
-
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
-              {exp.title}
-            </h3>
-          </div>
-
-          <p className="text-teal-500 mt-2 font-semibold">
-            {exp.company}
-          </p>
-        </div>
-
-        <div className="space-y-2 text-slate-600 dark:text-slate-400">
-          <div className="flex items-center gap-2">
-            <Calendar size={18} />
-            {exp.period}
-          </div>
-
-          <div className="flex items-center gap-2">
-            <MapPin size={18} />
-            {exp.location}
-          </div>
-        </div>
-      </div>
-
-      {/* Highlights */}
-      <ul className="mt-6 space-y-3">
-        {exp.highlights.map((item) => (
-          <li
-            key={item}
-            className="flex gap-3 text-slate-700 dark:text-slate-300"
-          >
-            <span className="text-teal-500 font-bold">✓</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-}
-
-// 3. Main Component
 export default function Experience() {
   return (
-    <section
-      id="experience"
-      className="py-24 bg-white dark:bg-slate-950 transition-colors duration-300"
-    >
-      <div className="max-w-6xl mx-auto px-6">
-
-        {/* Heading */}
+    <section id="experience" className="section-shell">
+      <div className="section-container">
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="section-heading"
         >
-          <p className="text-teal-500 uppercase tracking-widest font-semibold">
-            Experience
-          </p>
-
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mt-3">
-            Experience & Projects
-          </h2>
-
-          <p className="text-slate-600 dark:text-slate-400 mt-5 max-w-3xl mx-auto">
-            My practical experience through academic and personal projects.
+          <span className="eyebrow">Experience</span>
+          <h2 className="section-title">Practical experience through real builds</h2>
+          <p className="section-lead">
+            My experience is centered around hands-on development, from academic
+            projects to full-stack applications and production-minded features.
           </p>
         </motion.div>
 
-        {/* Cards */}
-        <div className="space-y-8">
-          {EXPERIENCE_DATA.map((exp, index) => (
-            <ExperienceCard
-              key={exp.title}
-              exp={exp}
-              index={index}
-            />
+        <div className="mx-auto max-w-5xl">
+          {EXPERIENCE.map((experience, index) => (
+            <motion.article
+              key={experience.role}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              className="glass-card rounded-[2rem] p-7 md:p-9"
+            >
+              <div className="flex flex-col gap-5 border-b border-slate-200 pb-6 dark:border-slate-800 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-11 w-11 place-items-center rounded-2xl bg-teal-500/10 text-teal-500">
+                      <BriefcaseBusiness size={23} />
+                    </span>
+                    <div>
+                      <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white">
+                        {experience.role}
+                      </h3>
+                      <p className="mt-1 font-semibold text-teal-600 dark:text-teal-300">
+                        {experience.company}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="inline-flex items-center gap-2 self-start rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-600 dark:bg-slate-900 dark:text-slate-400">
+                  <CalendarDays size={16} />
+                  {experience.period}
+                </div>
+              </div>
+
+              <ul className="mt-7 grid gap-4 md:grid-cols-2">
+                {experience.points.map((point) => (
+                  <li key={point} className="flex gap-3 text-slate-600 dark:text-slate-400">
+                    <CheckCircle2 className="mt-1 shrink-0 text-teal-500" size={18} />
+                    <span className="leading-7">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </motion.article>
           ))}
         </div>
-
       </div>
     </section>
   );
