@@ -1,11 +1,11 @@
 export const projects = [
   {
     id: "ez-store",
-    title: "EZ Store E-Commerce",
+    title: "Looma Store E-Commerce",
     description:
       "Professional full-stack e-commerce platform with customer and admin workflows, product management, cart, orders, JWT authentication, and sales analytics.",
     technologies: ["Angular", "TypeScript", "Node.js", "Express.js", "MongoDB", "Mongoose", "JWT", "bcrypt"],
-    github: "https://github.com/Eslam8078/E-commerce-Eslam-Store",
+    github: "https://github.com/Eslam8078/E-commerce--LOOMA-Store",
     live: null,
     type: "fullstack",
     featured: true,

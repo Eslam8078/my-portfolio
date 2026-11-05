@@ -52,7 +52,7 @@ export default function Contact() {
             <p>Let's discuss the product, the technical challenges, and how I can contribute from frontend architecture through APIs and data workflows.</p>
             <div className="contact-actions">
               <a className="primary-button" href="mailto:eslamayman2412@gmail.com"><Send size={18} /> Send Email</a>
-              <a className="secondary-button" href="/Eslam Ayman_Full-Stack CV.pdf" download><Download size={18} /> Download CV</a>
+              <a className="secondary-button" href="/Eslam_Ayman_Resume.pdf" download><Download size={18} /> Download CV</a>
             </div>
           </motion.div>
         </div>

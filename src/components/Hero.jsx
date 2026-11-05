@@ -80,7 +80,7 @@ export default function Hero() {
               Explore Projects
             </Link>
             <a
-              href="/Eslam Ayman_Full-Stack CV.pdf"
+              href="/Eslam_Ayman_Resume.pdf"
               download
               className="secondary-button inline-flex items-center gap-2 rounded-xl border border-slate-300 bg-white/70 px-6 py-3.5 font-bold text-slate-800 backdrop-blur transition dark:border-slate-700 dark:bg-slate-900/60 dark:text-white"
             >

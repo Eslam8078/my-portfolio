@@ -77,7 +77,7 @@ export default function Navbar() {
 
         <div className="nav-actions">
           <ThemeToggle />
-          <a href="/Eslam Ayman_Full-Stack CV.pdf" download className="nav-cv-button">
+          <a href="/Eslam_Ayman_Resume.pdf" download className="nav-cv-button">
             <Download size={16} />
             <span>Download CV</span>
           </a>
@@ -103,7 +103,7 @@ export default function Navbar() {
                   {label}
                 </NavLink>
               ))}
-              <a href="/Eslam Ayman_Full-Stack CV.pdf" download className="mobile-cv-button" onClick={close}>
+              <a href="/Eslam_Ayman_Resume.pdf" download className="mobile-cv-button" onClick={close}>
                 <Download size={17} /> Download CV
               </a>
             </div>
